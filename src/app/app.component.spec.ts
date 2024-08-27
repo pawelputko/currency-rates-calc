@@ -1,10 +1,14 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import {provideHttpClientTesting} from "@angular/common/http/testing";
+import {provideHttpClient} from "@angular/common/http";
+import {NoopAnimationsModule} from "@angular/platform-browser/animations";
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AppComponent],
+      imports: [AppComponent, NoopAnimationsModule],
+      providers: [provideHttpClient(),provideHttpClientTesting()]
     }).compileComponents();
   });
 
@@ -14,16 +18,23 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have the 'currency-exchange-calc' title`, () => {
+  it(`should have the 'Currency rates calculator' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('currency-exchange-calc');
+    expect(app.title).toEqual('Currency rates calculator');
   });
 
-  it('should render title', () => {
+  it('should render header', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, currency-exchange-calc');
+    expect(compiled.querySelector('app-header')).toBeTruthy();
+  });
+
+  it('should render currency-rates', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement as HTMLElement;
+    expect(compiled.querySelector('currency-rates')).toBeTruthy();
   });
 });

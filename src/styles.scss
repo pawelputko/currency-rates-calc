@@ -1,1 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+input[matinput]::-webkit-outer-spin-button,
+input[matinput]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[matinput][type=number] {
+  -moz-appearance: textfield;
+}
+
+/* to fix mat-select arrow aligning */
+.mat-mdc-select-arrow svg {
+  top: 200% !important;
+  left: 20% !important;
+}
+
+.mdc-text-field--filled {
+  background: linear-gradient(45deg, #08a108, transparent);
+}
+
+.mat-mdc-option.mdc-list-item--selected:not(.mdc-list-item--disabled):not(.mat-mdc-option-multiple) {
+  background: linear-gradient(45deg, #08a108, transparent);
+}
