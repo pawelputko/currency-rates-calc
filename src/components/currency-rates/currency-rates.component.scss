@@ -29,6 +29,11 @@
     gap: 16px;
     margin-top: 16px;
 
+    input[matInput] {
+      font-weight: 700;
+      color: #000;
+    }
+
     mat-select {
       margin-right: 5px;
     }

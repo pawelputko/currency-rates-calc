@@ -1,4 +1,4 @@
-import { Component, inject, OnInit} from "@angular/core";
+import {ChangeDetectionStrategy, Component, inject, OnInit} from "@angular/core";
 import {MatTableModule} from "@angular/material/table";
 import {CurrencyService} from "../../services/currency.service";
 import {catchError, EMPTY, finalize, Observable, of, switchMap} from "rxjs";
@@ -18,7 +18,20 @@ import {MatProgressSpinner} from "@angular/material/progress-spinner";
   styleUrls: ['./currency-rates.component.scss'],
   standalone: true,
   providers: [provideNativeDateAdapter()],
-  imports: [MatTableModule, MatDatepickerModule, AsyncPipe, NgIf, MatLabel, MatHint, MatFormField, MatInputModule, MatSelect, MatOption, MatProgressSpinner]
+  imports: [
+    MatTableModule,
+    MatDatepickerModule,
+    AsyncPipe,
+    NgIf,
+    MatLabel,
+    MatHint,
+    MatFormField,
+    MatInputModule,
+    MatSelect,
+    MatOption,
+    MatProgressSpinner
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CurrencyRatesComponent implements OnInit {
   private currencyService = inject(CurrencyService);
