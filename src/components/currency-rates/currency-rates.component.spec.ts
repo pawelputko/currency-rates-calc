@@ -95,7 +95,7 @@ describe('CurrencyRatesComponent', () => {
     // given
     component.inputCurrency = component.plnCurrency;
     component.outputCurrency = data[0].rates[0];
-    const expectedValue = component.defaultValue / component.outputCurrency.mid;
+    const expectedValue = component.parsedValue(component.defaultValue / component.outputCurrency.mid);
 
     // when
     component.calculateExchangeRate();
@@ -130,5 +130,13 @@ describe('CurrencyRatesComponent', () => {
     expect(component.inputCurrency).toEqual(component.plnCurrency);
     expect(component.defaultValue).toEqual(1);
     expect(component.calculatedValue).toEqual(1);
+  });
+
+  it('should parse number to 4 decimal digits', () => {
+    const value = 123.244589;
+
+    const expectedValue = component.parsedValue(value);
+
+    expect(expectedValue).toEqual(123.2446);
   });
 });

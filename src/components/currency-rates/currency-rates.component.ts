@@ -76,14 +76,20 @@ export class CurrencyRatesComponent implements OnInit {
     }
     if (this.inputCurrency.code === 'PLN') {
       this.calculatedValue = this.defaultValue / this.outputCurrency.mid;
+      this.calculatedValue = this.parsedValue(this.calculatedValue);
       return;
     }
     this.calculatedValue = this.defaultValue * (this.inputCurrency.mid / this.outputCurrency.mid);
+    this.calculatedValue = this.parsedValue(this.calculatedValue);
   }
 
   resetExchangeRates(): void {
     this.inputCurrency = this.outputCurrency = this.plnCurrency;
     this.defaultValue = 1;
     this.calculatedValue = 1;
+  }
+
+  parsedValue(value: number): number {
+    return parseFloat(value.toFixed(4));
   }
 }
